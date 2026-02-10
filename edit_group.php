@@ -10,10 +10,10 @@ include('includes/inside_headmaster.php');
 	<div class="medium-4 large-4 columns">&nbsp;</div>
 	<div class="medium-4 large-4 columns">
 	<?php
-	if(isset($_GET['editgroupid']))
+	if(isset($_GET['editgroupid']) || isset($_SESSION['editgroup']))
 	{
 
-	$edit_groupid=$_GET['editgroupid'];
+	$edit_groupid=isset($_GET['editgroupid']) ? $_GET['editgroupid'] : $_SESSION['editgroup'];
 	//STORE THE GROUP IN A SESSION VARIABLE
 	$_SESSION['editgroup']=$edit_groupid;
 	
@@ -56,7 +56,7 @@ include('includes/inside_headmaster.php');
 	
 	if($update)
 	{
-	$update2=mysqli_query($dbc,"UPDATE group_members SET fkgroups_groupname='$group_name' WHERE fkgroups_groupid='{$_SESSION['editgroup']}' AND $tenant LIMIT 1");
+	$update2=mysqli_query($dbc,"UPDATE group_members SET fkgroups_groupname='$group_name' WHERE fkgroups_groupid='{$_SESSION['editgroup']}' AND $tenant");
 
 	$success[] = 'Update successful. <a href="groups.php" class="whitestrong">Go to Groups</a>';
 	include('includes/alert.php');
@@ -85,9 +85,6 @@ include('includes/inside_headmaster.php');
 	</div>
 	</div>
 	<?php include('includes/footer.html');?>
-
-	</body>
-	</html>
 
 
 

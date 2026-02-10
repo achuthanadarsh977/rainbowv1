@@ -33,7 +33,7 @@ $error[] = 'Password must include at least one number,one letter and must be bet
 }
 else
 {
-$p = mysqli_real_escape_string($dbc,$_POST['pass']);
+$p = $_POST['pass'];
 }
 }
 
@@ -59,7 +59,7 @@ mysqli_autocommit($dbc,FALSE);
 
 //INSERT THE NEW RECORD TENANT INTO THE DATABASE
 //WE WANT EVERY NEW TENANT TO USE OUR APP FREE OF CHARGE FOR 15 DAYS
-$r = mysqli_query($dbc, "INSERT INTO tenants (tenant_email,tenant_pass,tenant_status,tenant_registration_date,tenant_expiry_date) VALUES ('$email', '"  .  SHA1($p) .  "', '$status',NOW(), DATE_ADD(NOW(), INTERVAL 15 DAY))");
+$r = mysqli_query($dbc, "INSERT INTO tenants (tenant_email,tenant_pass,tenant_status,tenant_registration_date,tenant_expiry_date) VALUES ('$email', SHA1('$p'), '$status',NOW(), DATE_ADD(NOW(), INTERVAL 15 DAY))");
 if (mysqli_affected_rows($dbc) === 1) 
 { 
 
@@ -173,7 +173,7 @@ mysqli_rollback($dbc);
 }// CLOSE IF(MYSQLI_AFFECTED_ROWS($DBC)==1) FOR TENANT INSERT
 else
 {// IF THE EMAIL IS NOT AVAILABLE
-$notify[] = '&nbsp;This email address has already been &nbsp;registered. &nbsp;<a href="forgot_password">Forgot Password?</a>';	
+$notify[] = '&nbsp;This email address has already been &nbsp;registered. &nbsp;<a href="forgot_password.php">Forgot Password?</a>';	
 }
 }//CLOSE IF EMPTY ERROR
 

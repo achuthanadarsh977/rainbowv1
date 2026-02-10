@@ -80,18 +80,19 @@ echo '<tr>
 	$restore_id = $checkbox[$i];
 	$sql = "UPDATE cms SET status='active' WHERE (id=$restore_id AND $tenant)";
 	$delete_result = mysqli_query($dbc,$sql);
-	}
-	if ($delete_result) 
+	if ($delete_result)
 	{
 	$sql2 = "UPDATE group_members SET status='active' WHERE (fkcms_cid=$restore_id AND $tenant)";
 	$delete_result2 = mysqli_query($dbc,$sql2);
-
-
+	}
+	}
+	if ($delete_result)
+	{
 	$_SESSION['move_success']=1;      //CONTACTS SUCCESSFULLY MOVED OUT OF TRASH
 	header("Location:contacts.php");	// IF SUCCESSFUL REDIRECT TO CONTACTS PAGE
-	} 
-	else 
-	{ 
+	}
+	else
+	{
 	$error[]= 'Restore NOT successful .';
      //echo mysqli_error($dbc);
 	}

@@ -1,6 +1,6 @@
 <?php
 	$page_title="View group";
-	if(isset($_GET['group_id']) || isset($_GET['group_name']))
+	if(isset($_GET['group_id']) && isset($_GET['group_name']))
 	{
 
 	$group_id=$_GET['group_id'];
@@ -42,8 +42,7 @@
 	</div></div></div>
 
 	<div class="row">
-	<div class="large-12 columns">
-	<form action="" method="POST" name="checkboxesform">';
+	<div class="large-12 columns">';
 	echo '<h4>Group:&nbsp;'.strtoupper($rowres['group_name']).'</h4>';
 	}
 
@@ -143,7 +142,7 @@
 	// IF SUCCESSFUL REFRESH THE PAGE 
 	if (mysqli_affected_rows($dbc) >0) {
 	$success[]='Delete successful.</p>';
-	header('Location:view_group.php?group_id='.$group_id);
+	header('Location:view_group.php?group_id='.$group_id.'&group_name='.$group_title);
 	} 
 	else { // IF THE DELETE WAS NOT SUCCESSFUL
 	//echo mysqli_error($dbc);
@@ -151,7 +150,7 @@
 	}}}
 	echo '</form></div></div>';
 	include('includes/alert.php');
-	include('includes/footer.html')
+	include('includes/footer.html');
 
 	?>
 	

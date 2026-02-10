@@ -110,7 +110,7 @@
 	elseif(mysqli_num_rows($r)==0)
 
 	{
-	$notify[]= 'You have not added any group. Click <a href="add_group+.php">Add group</a>&nbsp;to add a new group.';
+	$notify[]= 'You have not added any group. Click <a href="add_group.php">Add group</a>&nbsp;to add a new group.';
 	}
 	else{
 	$error[]= 'Could not retrieve groups due to a system error. Sorry for the incovenienece. Please try again later';

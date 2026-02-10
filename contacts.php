@@ -95,17 +95,19 @@
 	$del_id = $checkbox[$i]; //STORE EACH ONE IN A VARIABLE
 	$sql = "UPDATE cms SET status='del' WHERE (id=$del_id AND $tenant)";//CHANGE THE STATUS OF THE CONTACT TO SHOW THAT IT HAS BEEN DELETED
 	$delete_result = mysqli_query($dbc,$sql);
-	}
-	if ($delete_result) 
+	if ($delete_result)
 	{
 	$sql2 = "UPDATE group_members SET status='del' WHERE (fkcms_cid=$del_id AND $tenant)";//DONT FORGET TO UPDATE THE GROUP_MEMBERS TABLE AS WELL
 	$delete_result2 = mysqli_query($dbc,$sql2);
-
+	}
+	}
+	if ($delete_result)
+	{
 	$_SESSION['delete_success']=1;		//WE USE THIS VARIABLE TO ECHO A SUCCESS MESSAGE
 	header("Location:contacts.php");	// IF SUCCESSFUL REDIRECT TO CONTACTS PAGE
-	} 
-	else 
-	{ 
+	}
+	else
+	{
 	$error[]= 'Delete NOT successful .';
      //echo mysqli_error($dbc);
 	}

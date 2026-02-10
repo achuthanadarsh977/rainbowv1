@@ -73,10 +73,6 @@
 	$error[]='Your password could not be changed due to a system error. We apologize for any inconvenience.';
 	 }
 	 } //CLOSE IF TID
-	 else 
-	 { // NO VALID TENANT ID.
-	 $error[]='Please try again.';
-	 }
       include('includes/alert.php');
 
 

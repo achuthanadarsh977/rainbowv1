@@ -25,7 +25,7 @@ include('includes/inside_headmaster.php');
 
 	// RETRIEVE THE CONTACT INFO
 	$result=mysqli_query($dbc,"SELECT * from cms WHERE $tenant AND id='$id' LIMIT 1");
-	if (mysqli_affected_rows($dbc) == 1) 
+	if (mysqli_num_rows($result) == 1) 
 	{
 	$row = mysqli_fetch_array ($result,MYSQLI_ASSOC);
 	}
@@ -110,6 +110,7 @@ include('includes/alert.php');
 <div class="medium-6 large-6 columns">
 <form></form><!--CREATE A DUMMY FORM BECAUSE THE JRESOURCES SCRIPT FILE REFERENCES FORM 1-->
 <form action="" method="POST">
+<input type="hidden" name="id" value="<?php echo $id; ?>" />
 <div id="namesection">
 <h5>Name</h5>
 <input type="text" name="fullname" placeholder="Add a name" size="50" maxlength="50"

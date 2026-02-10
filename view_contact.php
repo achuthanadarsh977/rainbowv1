@@ -197,7 +197,7 @@
 	if(!empty($row['last_modified'])){echo $row['last_modified'];} else {echo '---';}
 	echo'</p>
 
-	<input type="hidden" name="cid" value="' .$id . '" />
+	<input type="hidden" name="id" value="' .$id . '" />
 	</form>
     <div class="medium-1 large-1 columns">
 		&nbsp;

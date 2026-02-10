@@ -62,7 +62,9 @@ if(!empty($_POST['website']))
 
 
   //CHECK IF THE PHONE NUMBER EXISTS FOR THE CURRENT TENANT
-$checkphone=@mysqli_query($dbc,"SELECT id FROM cms WHERE phone='$phone' AND phone!=' ' AND $tenant " );
+if(!empty($phone))
+{
+$checkphone=@mysqli_query($dbc,"SELECT id FROM cms WHERE phone='$phone' AND phone!=' ' AND phone!='' AND $tenant " );
 
 if(@mysqli_num_rows($checkphone)>0 )
 {
@@ -71,6 +73,7 @@ list($id)=mysqli_fetch_row($checkphone);
 mysqli_free_result($checkphone);
 $error[]='A contact with this phone number already exists.<a href="view_contact.php?id='.$id.'"><span class="white"><strong> Click here to see this person</strong></a>';
 }
+}// CLOSE IF NOT EMPTY PHONE
 
 // IF THERE ARE NO ERRORS, PROCEED
 
@@ -84,7 +87,7 @@ $last_id=mysqli_query($dbc,"SELECT cms_id FROM cms ORDER BY cms_id DESC LIMIT 1"
 //IF THERES NO CONTACT IN THE DATABASE YET
 if(@mysqli_num_rows($last_id)==0)
 {
-$last_id=0;
+$last_id=array(0);
 }
 else
 {

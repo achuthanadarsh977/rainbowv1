@@ -89,13 +89,12 @@ include('includes/alert.php');
 <label>Password</label>
 <input type="password" required placeholder="Enter password" value="" name="pass">
 
-<input type="submit" value="Sign in" name="submit" class="tiny radius button"/> 
+<input type="submit" value="Sign in" name="submit" class="tiny radius button"/>
 
+</fieldset>
+</form>
 </div>
 <div class="medium-4 large-4 columns">&nbsp;</div>
-</fieldset>
-
-</form>
 
 </div>
 </div>

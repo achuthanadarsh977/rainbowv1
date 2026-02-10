@@ -38,7 +38,8 @@
 		 $error[]='Please enter a valid password!';
 		}
 		
-		if ($p) 
+		$update = false;
+		if ($p)
 		{ // IF EVERYTHING'S OK.
 		// UPDATE THE RECORD
 		$update=mysqli_query($dbc,"UPDATE tenants SET tenant_pass=SHA1('$p') WHERE tenant_id=$tenant_id LIMIT 1");

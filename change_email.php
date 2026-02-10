@@ -21,17 +21,18 @@
 	
 	if(empty($error))
 	{
+	$update = false;
 	//CHECK IF THE NEW EMAIL IS ALREADY IN USE
 	$r = mysqli_query($dbc, "SELECT tenant_email  FROM tenants WHERE tenant_email='$email' and tenant_id != $tenant_id ");
 	// GET THE NUMBER OF ROWS RETURNED:
 	$rows = @mysqli_num_rows($r);
-	if ($rows === 0) 
+	if ($rows === 0)
 	{ // NO TENANT EXISTS WITH SAME EMAIL
 	$update=mysqli_query($dbc,"UPDATE tenants SET tenant_email='$email' WHERE tenant_id=$tenant_id LIMIT 1");
 	}
 	else
 	{
-	$error[]='This email already exists';	
+	$error[]='This email already exists';
 	}
 
 	if($update)
