@@ -73,7 +73,7 @@
 	$delete_result = mysqli_query($dbc,$sql) ;
 	if ($delete_result) 
 	{
-	$sql2 = "UPDATE group_members SET status='del' WHERE (fkcms_cid=$del_id AND $tenant)";//DONT FORGET TO UPDATE THE GROUP_MEMBERS TABLE AS WELL
+	$sql2 = "UPDATE group_members SET status='del' WHERE (fkcms_cid=$id AND $tenant)";//DONT FORGET TO UPDATE THE GROUP_MEMBERS TABLE AS WELL
 	$delete_result2 = mysqli_query($dbc,$sql2);
 
 	$_SESSION['delete_success']=1;		//WE USE THIS VARIABLE TO ECHO A SUCCESS MESSAGE
