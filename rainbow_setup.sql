@@ -1,0 +1,84 @@
+-- RAINBOW v1 Database Setup
+-- Run this script in phpMyAdmin or MySQL command line
+
+-- Step 1: Create the database
+CREATE DATABASE IF NOT EXISTS rainbow;
+
+USE rainbow;
+
+-- Step 2: Create the database user
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON rainbow.* TO
+'rainbow_user'@'localhost'
+IDENTIFIED BY 'rainbowpassword';
+
+FLUSH PRIVILEGES;
+
+-- Step 3: Create the tables
+
+CREATE TABLE tenants (
+ tenant_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+ tenant_email varchar(60) NOT NULL,
+ tenant_pass char(40) NOT NULL,
+ tenant_status char(10) DEFAULT NULL,
+ tenant_registration_date datetime NOT NULL,
+ tenant_expiry_date varchar(100) NOT NULL,
+ last_modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ last_modified_by varchar(200) NOT NULL,
+ PRIMARY KEY (tenant_id),
+ UNIQUE KEY tenant_email (tenant_email)
+) ENGINE=InnoDB;
+
+CREATE TABLE tenant_tokens (
+ tenant_token_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+ fktk_tid int(11) NOT NULL,
+ tenant_token varchar(18) NOT NULL,
+ date_entered datetime NOT NULL,
+ PRIMARY KEY (tenant_token_id),
+ UNIQUE KEY tenant_token (tenant_token)
+) ENGINE=InnoDB;
+
+CREATE TABLE cms (
+ cms_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+ id varchar(100) NOT NULL,
+ fullname varchar(50) DEFAULT NULL,
+ phone varchar(100) DEFAULT NULL,
+ email varchar(100) DEFAULT NULL,
+ company varchar(100) DEFAULT NULL,
+ jobtitle varchar(100) DEFAULT NULL,
+ website varchar(100) DEFAULT NULL,
+ address varchar(3000) DEFAULT NULL,
+ note text,
+ date_entered datetime NOT NULL,
+ created_by varchar(200) NOT NULL,
+ last_modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ last_modified_by varchar(200) NOT NULL,
+ fk_tenant_id int(11) NOT NULL,
+ fk_tenant_token varchar(18) NOT NULL,
+ status varchar(10) NOT NULL DEFAULT 'active',
+ PRIMARY KEY (cms_id)
+) ENGINE=InnoDB;
+
+CREATE TABLE `groups` (
+ group_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+ group_name varchar(100) NOT NULL,
+ group_description varchar(100) DEFAULT NULL,
+ date_created datetime NOT NULL,
+ created_by varchar(50) NOT NULL,
+ last_modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ last_modified_by varchar(50) NOT NULL,
+ fk_tenant_id int(11) NOT NULL,
+ fk_tenant_token varchar(18) NOT NULL,
+ PRIMARY KEY (group_id)
+) ENGINE=InnoDB;
+
+CREATE TABLE group_members (
+ group_memberid int(11) NOT NULL AUTO_INCREMENT,
+ fkgroups_groupid int(11) NOT NULL,
+ fkgroups_groupname varchar(100) NOT NULL,
+ fkcms_cid varchar(100) NOT NULL,
+ fk_tenant_id int(11) NOT NULL,
+ fk_tenant_token varchar(18) NOT NULL,
+ status varchar(10) NOT NULL DEFAULT 'active',
+ PRIMARY KEY (group_memberid)
+) ENGINE=MyISAM;

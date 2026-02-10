@@ -1,0 +1,9 @@
+OPEN THE TABLES FILE.
+USING Command prompt or PHPMYADMIN, create the database and the tables.
+CHECK starthere.jpg and starthere2.jpg to see how i did mine.
+After creating the database and tables launch your browser and go to : http://localhost/rainbow/index.php
+
+You should see starthere3.jpg
+
+
+

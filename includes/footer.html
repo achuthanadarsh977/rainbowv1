@@ -1,0 +1,59 @@
+<!-- Start of Footer -->
+
+<footer class="row">
+<div class="row">
+<div class="large-12 columns"><hr />
+<div class="large-8 columns">
+<p>&copy; <?php echo date('Y');?> &nbsp;RAINBOW. <span class=""></span>
+</p>
+</div>
+<div class="large-4 columns">
+<ul class="inline-list right">
+<?php 
+
+//CHECK IF THE USER IS LOGGED IN AND PRINT A LOGOUT BUTTON
+if (isset($_SESSION['tenant_token']) || isset($_SESSION['fk_tenant_token'])) 
+{
+ echo '<li><a href="logout.php" title="Logout">Logout</a></li>';
+ echo '<li><a href="contacts.php" title="Home">Home</a></li>';
+}
+else
+{
+echo '<li><a href="signin.php" title="Home">Home</a></li>
+<li><a href="signup.php" title="Sign up">Sign Up</a></li>';
+}
+
+?>
+
+
+</ul>
+</div>
+</div>
+</div>
+</footer>
+ <!-- End Footer -->
+ </div>
+ </div>
+ <!-- Start of StatCounter Code for Default Guide -->
+ 
+<script type="text/javascript">
+var sc_project=9561867; 
+var sc_invisible=1; 
+var sc_security="23f1ac94"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/9561867/0/23f1ac94/1/"
+alt="web stats"></a></div></noscript>
+<!--End of StatCounter Code for Default Guide -->
+</body>
+</html>
+<?php // Flush the buffered output.
+ob_end_flush( );
+?> <!--//paste code here

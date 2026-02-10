@@ -1,0 +1,75 @@
+  
+/*YOUR STYLE */
+@font-face {
+  font-family:'OPEN-SANS';
+  font-style: normal;
+  font-weight: 700;
+  src: url('OPEN-SANS.LIGHT.TTF');
+  src: url('OPEN-SANS.eot?') format('eot'), 
+  url('OPEN-SANS.woff') format('woff'), 
+  url('OPEN-SANS.ttf') format('truetype');
+}
+
+@font-face {
+  font-family:'OPEN-SANS.EXTRABOLD';
+  font-style: normal;
+  font-weight: 700;
+  src: url('OPEN-SANS.EXTRABOLD.TTF');
+}
+  button.tiny, .button.tiny 
+  {
+ 
+    font-size: 0.9875rem;
+  }
+
+  button.thin, .button.thin {
+    padding-top: 0.425rem;
+    padding-right: 1.25rem;
+    padding-bottom: 0.4875rem;
+    padding-left: 1.25rem;
+    font-size: 0.9875rem;
+}
+.whitestrong{
+
+	color: #fff;
+	font-weight: bold;
+}
+.red{
+
+  color: #b22222;
+}
+#customform
+{
+margin-top: 60px;
+
+}
+.alert-box 
+{
+ font-size: 0.9725rem;
+}
+input[type="checkbox"]
+{
+padding: 0;
+margin:0;
+}
+
+select{
+padding: 0;
+margin:0;
+}
+.small_spacing{
+
+  margin-left: 4px;
+}
+.trash_table
+{
+background-color: #ccc;
+}
+.group_table
+{
+background-color: #FFE4E1;
+}
+.small{
+
+  font-size: 12px;
+}
